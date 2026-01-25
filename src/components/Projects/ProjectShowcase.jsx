@@ -1,9 +1,10 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 import { ChevronLeft } from "lucide-react";
 import { projects } from "../data/Projects";
 import Layout from "../layout/layout";
 import { ProjectHero } from "./ProjectHero";
 import Loader from "../Loader/Loader";
+
 // UI Components
 const TabsContext = createContext();
 
@@ -98,6 +99,13 @@ export default function ProjectShowcase() {
   const [selectedSubProject, setSelectedSubProject] = useState(null);
   const [loading] = useState(false);
 
+  // Scroll to top when a project is selected
+  useEffect(() => {
+    if (selectedProject) {
+      window.scrollTo(0, 0);
+    }
+  }, [selectedProject]);
+
   const handleProjectClick = (project) => {
     setSelectedProject(project);
     setSelectedSubProject(null);
@@ -175,7 +183,7 @@ export default function ProjectShowcase() {
     return (
       <Layout>
         {loading && <Loader />}
-        <div className="w-full max-w-7xl mx-auto p-4">
+        <div className="w-full max-w-7xl mx-auto p-4 mt-7">
           <Button variant="ghost" className="mb-6" onClick={handleBackClick}>
             <ChevronLeft className="mr-2 h-4 w-5" />
             {selectedSubProject
