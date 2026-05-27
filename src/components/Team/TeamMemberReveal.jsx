@@ -32,11 +32,9 @@ const teamMembers = [
 
 const TeamMemberCard = ({ member }) => {
   return (
-    <div
-      onClick={() => {
-        window.location.href = member.link;
-      }}
-    >
+    <div className={styles.card} onClick={() => {
+      window.location.href = member.link;
+    }}>
       <div className={styles.cardInner}>
         <div className={`${styles.cardFront} flex items-center justify-center`}>
           <div className={styles.imageWrapper}>
