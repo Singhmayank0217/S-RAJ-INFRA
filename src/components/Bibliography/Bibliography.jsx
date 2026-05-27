@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./AnimatedBibliography.css";
-import logo from "../../assets/Logo/logo.svg"
+import logo from "../../assets/Home_Director/6Q0A0673.JPG.jpeg"
 
 const Bibliography = () => {
   const [isExpanded, setIsExpanded] = useState(false);
