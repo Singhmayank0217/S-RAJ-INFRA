@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./TeamMemberReveal.module.css";
 import Sathyendra from "../../assets/Home_Director/6Q0A0673.JPG.jpeg";
 import Kumar from "../../assets/Home_Director/6Q0A0552.JPG.jpeg";
@@ -30,12 +30,9 @@ const teamMembers = [
   },
 ];
 
-const TeamMemberCard = ({ member, isFlipped, onFlip, onLeave }) => {
+const TeamMemberCard = ({ member }) => {
   return (
     <div
-      className={`${styles.card} ${isFlipped ? styles.flipped : ""}`}
-      onMouseEnter={onFlip}
-      onMouseLeave={onLeave}
       onClick={() => {
         window.location.href = member.link;
       }}
@@ -57,8 +54,6 @@ const TeamMemberCard = ({ member, isFlipped, onFlip, onLeave }) => {
 };
 
 const TeamMemberReveal = () => {
-  const [flippedMember, setFlippedMember] = useState(null);
-
   return (
     <div className="w-full py-28 text-center bg-gradient-to-b from-slate-100 via-white to-amber-50/60">
       <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 italic mb-5" style={{ fontFamily: '"Playfair Display", serif' }}>
@@ -74,9 +69,6 @@ const TeamMemberReveal = () => {
         <div className={styles.topRow}>
           <TeamMemberCard
             member={teamMembers[0]}
-            // isFlipped={flippedMember === teamMembers[0].id}
-            // onFlip={() => setFlippedMember(teamMembers[0].id)}
-            onLeave={() => setFlippedMember(null)}
           />
         </div>
 
@@ -85,9 +77,6 @@ const TeamMemberReveal = () => {
             <TeamMemberCard
               key={member.id}
               member={member}
-            //   isFlipped={flippedMember === member.id}
-            //   onFlip={() => setFlippedMember(member.id)}
-              onLeave={() => setFlippedMember(null)}
             />
           ))}
         </div>
